@@ -27,7 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = "School.User"
+TEACHER_MODEL = "School.Teacher"
+STUDENT_MODEL = "School.Student"
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+    'School',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
