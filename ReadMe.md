@@ -22,6 +22,7 @@ Run `docker-compsoe run django python3 manage.py test`
 
 ## Run Server
 
+Run `docker-compose up`
 Run `docker-compsoe run django python3 manage.py runserver 0.0.0.0:8000`
 
 ## Login in Admin UI
