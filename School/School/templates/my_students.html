@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Date Of Birth</th>
+      <th scope="col">grade_level</th>
+      <th scope="col">student_id</th>
+      <th scope="col">Hobby</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in students %}
+    <tr>
+      <th scope="row">{{ student.first_name }}</th>
+      <th scope="row">{{ student.last_name }}</th>
+      <th scope="row">{{ student.date_of_birth }}</th>
+      <th scope="row">{{ student.grade_level }}</th>
+      <th scope="row">{{ student.student_id }}</th>
+      <th scope="row">{{ student.hobby | join:', ' }}</th>
+
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
