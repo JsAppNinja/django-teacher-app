@@ -31,11 +31,10 @@ class TeacherAdmin(admin.ModelAdmin):
 class StudentAdmin(admin.ModelAdmin):
     list_display_links = ('first_name', 'last_name')
     list_display = ('first_name', 'last_name', 'grade_level', 'date_of_birth', 'student_id')
-    fields = ('first_name', 'last_name', 'grade_level', 'date_of_birth', 'student_id', 'teachers', 'hobby',)
+    fields = ('first_name', 'last_name', 'grade_level', 'date_of_birth', 'student_id', 'hobby',)
     form = StudentForm
 
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Teacher, TeacherAdmin)
-
