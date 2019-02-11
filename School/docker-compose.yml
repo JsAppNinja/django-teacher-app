@@ -1,0 +1,37 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:10.5-alpine
+
+    environment:
+      - PGDATA=/var/lib/postgresql/data
+    volumes:
+      - data:/var/lib/postgresql/data/
+    ports:
+      - "5433:5432"
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py test && python3 manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=FDEREKDF_(123
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=postgres
+      - SQL_USER=postgres
+      - SQL_PASSWORD=postgresdsfd
+      - SQL_HOST=postgres
+      - SQL_PORT=5432
+    volumes:
+      - .:/code
+      - media:/media
+    depends_on:
+      - postgres
+
+volumes:
+  data:
+    driver: local
+  media:
+    driver: local
