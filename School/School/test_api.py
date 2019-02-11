@@ -5,6 +5,7 @@ from django.apps import apps as django_apps
 from django.db import IntegrityError
 from rest_framework.test import APIRequestFactory, APITestCase
 from rest_framework import status
+from django.contrib import auth
 
 User = get_user_model()
 Teacher = django_apps.get_model('School', 'Teacher')
@@ -29,9 +30,9 @@ class TeacherTest(TestCase):
         user.is_superuser = True
         user.save()
 
-        Teacher.objects.create(first_name='hello', last_name='world', honorofic_title='Mr', user=user)
-        self.client.login(email = email, password=password)
-        assert user.is_authenticated()
+        teacher = Teacher.objects.create(first_name='hello', last_name='world', honorofic_title='Mr', user=user)
+
+        assert teacher.id != None
 
 class TestRelationShipe(TestCase):
     def test_relationshipe(self):

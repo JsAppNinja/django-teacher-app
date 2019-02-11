@@ -13,7 +13,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py test && python3 manage.py runserver 0.0.0.0:8000"
+    command: bash -c "pip3 install -r requirements.txt && python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py test && python3 manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     environment:
